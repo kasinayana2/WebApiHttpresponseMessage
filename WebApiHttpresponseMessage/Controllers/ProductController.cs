@@ -9,23 +9,42 @@ namespace WebApiHttpresponseMessage.Controllers
 {
     public class ProductController : ApiController
     {
-        public HttpResponseMessage GetAll()
+        public IHttpActionResult GetAll()
         {
             string[] products = { "Tv", "Mobile", "Fridge", "Bike", "Laptop" };
-            return Request.CreateResponse(HttpStatusCode.OK, products);
+            return Ok(products);
         }
-        public HttpResponseMessage GetProduct(int id)
+        public IHttpActionResult GetProduct(int id)
         {
             string[] products = { "Tv", "Mobile", "Fridge", "Bike", "Laptop" };
-            if(id>=0 && id <= 4)
+            if(id>=0 && id >= 4)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, products[id]);
+                return Ok(products);
             }
             else
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid ID");
+                return NotFound();
             }
         }
+
+
+        //public HttpResponseMessage GetAll()
+        //{
+        //    string[] products = { "Tv", "Mobile", "Fridge", "Bike", "Laptop" };
+        //    return Request.CreateResponse(HttpStatusCode.OK, products);
+        //}
+        //public HttpResponseMessage GetProduct(int id)
+        //{
+        //    string[] products = { "Tv", "Mobile", "Fridge", "Bike", "Laptop" };
+        //    if(id>=0 && id <= 4)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.OK, products[id]);
+        //    }
+        //    else
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.NotFound, "Invalid ID");
+        //    }
+        //}
 
         //public string[] GetAll()
         //{
